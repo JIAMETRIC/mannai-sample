@@ -500,6 +500,143 @@
       color: var(--text-light);
       pointer-events: none;
     }
+
+    /* --- PREMIUM DARK MODAL --- */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 15px;
+    }
+
+    .modal-container {
+      background: #1e293b;
+      /* Dark Navy */
+      width: 100%;
+      max-width: 600px;
+      border-radius: 20px;
+      box-shadow:
+        10px 10px 20px #0f172a,
+        -10px -10px 20px #2e3a51;
+      padding: 24px;
+      color: #f1f5f9;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 15px;
+    }
+
+    .modal-title {
+      font-family: var(--fontHeading);
+      font-size: 20px;
+      font-weight: 700;
+      color: #f1f5f9;
+    }
+
+    .modal-close {
+      cursor: pointer;
+      font-size: 20px;
+      color: #94a3b8;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: #f1f5f9;
+    }
+
+    .modal-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .modal-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-input,
+    .form-select {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 10px 12px;
+      color: #f1f5f9;
+      font-size: 14px;
+      outline: none;
+      box-shadow: inset 2px 2px 5px #0f172a, inset -2px -2px 5px #2e3a51;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus,
+    .form-select:focus {
+      border-color: var(--secondary);
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 24px;
+      border-top: 1px solid #334155;
+      padding-top: 20px;
+    }
+
+    .modal-btn {
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-size: 14px;
+      transition: transform 0.1s;
+    }
+
+    .modal-btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-cancel {
+      background: #334155;
+      color: #f1f5f9;
+    }
+
+    .btn-save {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: white;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 
@@ -522,6 +659,109 @@
   <div class="search-container">
     <input type="text" class="search-input" placeholder="Search Voter...">
     <i class="fa-solid fa-magnifying-glass search-icon"></i>
+  </div>
+
+  <!-- MODAL FOR ADD NEW -->
+  <div class="modal-backdrop" id="addNewModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h2 class="modal-title">Edit Record <span style="font-size: 14px; opacity: 0.7;">#New</span></h2>
+        <i class="fa-solid fa-xmark modal-close" onclick="closeModal()"></i>
+      </div>
+      <form id="voterForm">
+        <div class="modal-form-grid">
+          <div class="form-group">
+            <label>S.No *</label>
+            <input type="number" name="sno" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>EPIC No *</label>
+            <input type="text" name="epic" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Name (Tamil) *</label>
+            <input type="text" name="name_ta" class="form-input tamil-text" required>
+          </div>
+          <div class="form-group">
+            <label>Name (English) *</label>
+            <input type="text" name="name_en" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Relation Type *</label>
+            <select name="rel_type" class="form-select" required>
+              <option value="Father">Father</option>
+              <option value="Husband">Husband</option>
+              <option value="Mother">Mother</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Rel Name (Tamil) *</label>
+            <input type="text" name="rel_name_ta" class="form-input tamil-text" required>
+          </div>
+          <div class="form-group">
+            <label>Rel Name (English) *</label>
+            <input type="text" name="rel_name_en" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>House No *</label>
+            <input type="text" name="house_no" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Age *</label>
+            <input type="number" name="age" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Gender *</label>
+            <select name="gender" class="form-select" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Booth *</label>
+            <input type="number" name="booth" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Page *</label>
+            <input type="number" name="page" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label>Mobile</label>
+            <input type="tel" name="mobile" class="form-input" placeholder="Optional">
+          </div>
+          <div class="form-group">
+            <label>Party</label>
+            <select name="party" class="form-select">
+              <option value="">Select</option>
+              <option value="DMK">DMK</option>
+              <option value="AIADMK">AIADMK</option>
+              <option value="TVK">TVK</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Gov Beneficiaries</label>
+            <select name="government_beneficiaries" class="form-select">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Postal</label>
+            <select name="postal" class="form-select">
+              <option value="No">No</option>
+              <option value="Yes">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="modal-btn btn-cancel" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="modal-btn btn-save">Save</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <div id='card-container'></div>
@@ -7704,6 +7944,24 @@
 
     const container = document.getElementById('card-container');
     const searchInput = document.querySelector('.search-input');
+    const modal = document.getElementById('addNewModal');
+    const voterForm = document.getElementById('voterForm');
+
+    function openModal() {
+      modal.style.display = 'flex';
+      voterForm.reset();
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    // Close modal on backdrop click
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
 
     function renderCards(data) {
       const fragment = document.createDocumentFragment();
@@ -7826,7 +8084,7 @@
 
             <div class="actions">
                 <button class="act-btn btn-submit">Submit Entry</button>
-                <button class="act-btn btn-new"><i class="fa-solid fa-plus"></i> New</button>
+                <button type="button" class="act-btn btn-new" onclick="openModal()"><i class="fa-solid fa-plus"></i> New</button>
             </div>
         </div>
     `;
@@ -7834,6 +8092,34 @@
       });
       container.appendChild(fragment);
     }
+
+    // Handle Form Submission
+    voterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+      formData.append('action', 'create');
+
+      fetch('crud_handler.php', {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            alert('Record created successfully!');
+            closeModal();
+            // Ideally we would refresh data here, but for now we just close
+            // In a real app, you might fetch the updated mainData
+          } else {
+            alert('Error: ' + data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('An unexpected error occurred.');
+        });
+    });
 
     // Debounce for performance if needed, but strict filtering is fine
     searchInput.addEventListener('input', function (e) {
