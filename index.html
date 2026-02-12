@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neumorphism - Sharp</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&family=Playfair+Display:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Palette */
+            --primary: #2596be;
+            --secondary: #5bc1da;
+            /* Blue */
+            /* --bg: #ebeaea; */
+            /* The Base Grey */
+            --bg: #eff2f7;
+            --text-dark: #3a3a3a;
+            --text-light: #666666;
+
+            /* Neumorphic Shadows */
+            --neu-shadow-light: #ffffff;
+            /* --neu-shadow-dark: #bebebe; */
+            --neu-shadow-dark: #d1d9e6;
+
+            /* Fonts */
+            --fontHeading: 'Playfair Display', serif;
+            --fontBody: 'Inter', sans-serif;
+            --fontTamil: 'Noto Sans Tamil', sans-serif;
+
+            /* Party Colors */
+            --dmk: #dc2626;
+            --aiadmk: #16a34a;
+            --tvk: #d97706;
+            /* Dark Blue */
+            --others: #64748b;
+            /* Slate Grey */
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--fontBody);
+            background-color: var(--bg);
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        /* --- THE NEUMORPHIC CARD --- */
+        .neu-card {
+            width: 100%;
+            max-width: 380px;
+            background: var(--bg);
+            /* Reduced Radius: Was 30px, now 16px */
+            border-radius: 16px;
+            box-shadow:
+                8px 8px 16px var(--neu-shadow-dark),
+                -8px -8px 16px var(--neu-shadow-light);
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            margin: 20px auto;
+            /* Centered */
+            position: relative;
+        }
+
+        /* --- PROFILE SECTION --- */
+        .profile-container {
+            /* Reduced Radius */
+            border-radius: 12px;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Decorative "Pressed" divider */
+        .divider {
+            height: 2px;
+            width: 100%;
+            background: var(--bg);
+            box-shadow:
+                inset 2px 2px 4px var(--neu-shadow-dark),
+                inset -2px -2px 4px var(--neu-shadow-light);
+            border-radius: 2px;
+            margin: 0 0 20px 0;
+        }
+
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .sno-text {
+            font-family: var(--fontHeading);
+            color: var(--primary);
+            font-size: 16px;
+            font-weight: 700;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+        }
+
+        .booth-badge {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-light);
+            padding: 6px 12px;
+            /* Reduced Radius */
+            border-radius: 6px;
+            background: var(--bg);
+            box-shadow:
+                3px 3px 6px var(--neu-shadow-dark),
+                -3px -3px 6px var(--neu-shadow-light);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .names {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ta-name {
+            font-family: var(--fontTamil);
+            color: var(--text-light);
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .en-name {
+            font-family: var(--fontHeading);
+            color: var(--text-dark);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .epic {
+            font-family: var(--fontBody);
+            color: var(--primary);
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 18px;
+            text-shadow: 1px 1px 1px #fff;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+
+        .meta strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+
+        /* --- CONTROLS --- */
+        .section-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            margin-left: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Neomorphic Radios */
+        .party-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .neu-radio-label {
+            cursor: pointer;
+            position: relative;
+        }
+
+        .neu-btn {
+            height: 48px;
+            /* Reduced Radius: Was 14px, now 8px */
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 12px;
+            transition: all 0.3s ease;
+            background: var(--bg);
+            box-shadow:
+                4px 4px 8px var(--neu-shadow-dark),
+                -4px -4px 8px var(--neu-shadow-light);
+            color: var(--text-light);
+        }
+
+        .dot-well {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            /* Circle stays circular */
+            box-shadow:
+                inset 2px 2px 4px var(--neu-shadow-dark),
+                inset -2px -2px 4px var(--neu-shadow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot-fill {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: transparent;
+            transition: 0.3s;
+        }
+
+        .p-text {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Active State */
+        input[type="radio"]:checked+.neu-btn {
+            box-shadow:
+                inset 2px 2px 5px var(--neu-shadow-dark),
+                inset -2px -2px 5px var(--neu-shadow-light);
+            color: var(--primary);
+        }
+
+        /* Color fills */
+        #dmk:checked+.neu-btn .dot-fill {
+            background: var(--dmk);
+            box-shadow: 0 0 6px var(--dmk);
+        }
+
+        #aiadmk:checked+.neu-btn .dot-fill {
+            background: var(--aiadmk);
+            box-shadow: 0 0 6px var(--aiadmk);
+        }
+
+        #tvk:checked+.neu-btn .dot-fill {
+            background: var(--tvk);
+            box-shadow: 0 0 6px var(--tvk);
+        }
+
+        #others:checked+.neu-btn .dot-fill {
+            background: var(--others);
+            box-shadow: 0 0 6px var(--others);
+        }
+
+        .radio-hide {
+            display: none;
+        }
+
+
+        /* Toggles */
+        .status-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .t-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Neomorphic Switch Track */
+        .neu-switch {
+            background: var(--bg);
+            /* Reduced Radius: Was 20px, now 10px */
+            border-radius: 10px;
+            padding: 4px;
+            display: flex;
+            box-shadow:
+                inset 2px 2px 4px var(--neu-shadow-dark),
+                inset -2px -2px 4px var(--neu-shadow-light);
+        }
+
+        .neu-opt {
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            /* Reduced Radius: Was 16px, now 6px */
+            border-radius: 6px;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        /* The Active "Knob" floats above */
+        .neu-inp:checked+.neu-opt {
+            color: var(--primary);
+            background: var(--bg);
+            box-shadow:
+                2px 2px 4px var(--neu-shadow-dark),
+                -2px -2px 4px var(--neu-shadow-light);
+        }
+
+        .neu-inp {
+            display: none;
+        }
+
+
+        /* Buttons */
+        .actions {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .act-btn {
+            border: none;
+            /* Reduced Radius: Was 16px, now 8px */
+            border-radius: 8px;
+            padding: 16px;
+            font-family: var(--fontBody);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .btn-submit {
+            color: #ffffff;
+            background: var(--secondary);
+            box-shadow:
+                6px 6px 12px var(--neu-shadow-dark),
+                -6px -6px 12px var(--neu-shadow-light);
+        }
+
+        .btn-submit:active {
+            box-shadow:
+                inset 3px 3px 6px var(--neu-shadow-dark),
+                inset -3px -3px 6px var(--neu-shadow-light);
+            color: #1a6b8a;
+        }
+
+        .btn-new {
+            color: var(--text-light);
+            background: var(--bg);
+            box-shadow:
+                6px 6px 12px var(--neu-shadow-dark),
+                -6px -6px 12px var(--neu-shadow-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .btn-new:active {
+            box-shadow:
+                inset 3px 3px 6px var(--neu-shadow-dark),
+                inset -3px -3px 6px var(--neu-shadow-light);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            margin-bottom: 20px;
+        }
+
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 480px;
+            /* Match card width logic */
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Ensure images fit well in navbar */
+        .nav-content img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Adjust Constituency Text for Navbar */
+        .constituency {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .constituency-name {
+            font-family: var(--fontHeading);
+            font-size: 16px;
+            margin: 2px 0 0 0;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .minister-logo {
+            height: 50px !important;
+            border-radius: 50%;
+            /* Make circular if it's a photo */
+            box-shadow: 2px 2px 5px var(--neu-shadow-dark), -2px -2px 5px var(--neu-shadow-light);
+            margin-bottom: 2px;
+        }
+
+        .tamil-name {
+            font-size: 11px;
+            color: var(--text-light);
+            font-family: 'Noto Sans Tamil', sans-serif;
+            margin-top: 0;
+        }
+
+        /* --- CARD ADJUSTMENTS --- */
+        .neu-card {
+            margin-top: 0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR (Fixed/Sticky Header) -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <img class="dmk-logo" src="party_logos/logo_dmk.png" alt="">
+            <div class="constituency">
+                <img class="minister-logo" src="party_logos/minister.png" alt="">
+                <h2 class="constituency-name">Mannargudi-167</h2>
+                <span class="tamil-name">(மன்னார்குடி)</span>
+            </div>
+            <img class="mannai-logo" src="party_logos/logo_mannai.png" alt="">
+        </div>
+    </nav>
+
+    <div class="neu-card">
+
+        <!-- PROFILE -->
+        <div class="profile-container">
+            <div class="header-row">
+                <div class="sno-text">S.No: <span id="sno"></span>465</span></div>
+                <div class="booth-badge">Booth: <span id="booth">307</span></div>
+            </div>
+
+            <div class="info-row">
+                <div class="names">
+                    <span class="ta-name" id="name_ta">அருண் குமார்</span>
+                    <span class="en-name" id="name_en">Arun Kumar</span>
+                </div>
+                <div class="epic" id="epic">ABC1234567</div>
+            </div>
+
+            <div class="meta">
+                <div>Rel: <strong><span id="rel_name_en">Karthik</span> (<span id="rel_type">F</span>)</strong></div>
+                <div>Age: <strong><span id="age">34</span> / <span id="gender">M</span></strong></div>
+            </div>
+            <div class="meta" style="margin-top:4px">
+                <div>Page No: <strong><span id="page">05</span></strong></div>
+                <div>Union: <strong><span id="union_name">Mannargudi</span></strong></div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- INPUTS -->
+        <div>
+            <div class="section-label"><i class="fa-solid fa-flag"></i> Select Party</div>
+            <div class="party-list">
+
+                <label class="neu-radio-label">
+                    <input type="radio" name="party" id="dmk" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well">
+                            <div class="dot-fill"></div>
+                        </div>
+                        <span class="p-text">DMK</span>
+                    </div>
+                </label>
+
+                <label class="neu-radio-label">
+                    <input type="radio" name="party" id="aiadmk" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well">
+                            <div class="dot-fill"></div>
+                        </div>
+                        <span class="p-text">AIADMK</span>
+                    </div>
+                </label>
+
+                <label class="neu-radio-label">
+                    <input type="radio" name="party" id="tvk" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well">
+                            <div class="dot-fill"></div>
+                        </div>
+                        <span class="p-text">TVK</span>
+                    </div>
+                </label>
+
+                <label class="neu-radio-label">
+                    <input type="radio" name="party" id="others" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well">
+                            <div class="dot-fill"></div>
+                        </div>
+                        <span class="p-text">Others</span>
+                    </div>
+                </label>
+
+            </div>
+
+            <div class="section-label"><i class="fa-solid fa-sliders"></i> Status</div>
+            <div class="status-group">
+                <div class="toggle-row">
+                    <div class="t-label"><i class="fa-solid fa-building-columns" style="color:#aaa"></i> Beneficiaries
+                    </div>
+                    <div class="neu-switch">
+                        <label>
+                            <input type="radio" name="government_beneficiaries" value="No" class="neu-inp" checked>
+                            <div class="neu-opt">No</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="government_beneficiaries" value="Yes" class="neu-inp">
+                            <div class="neu-opt">Yes</div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="toggle-row">
+                    <div class="t-label"><i class="fa-solid fa-envelope" style="color:#aaa"></i> Postal Vote</div>
+                    <div class="neu-switch">
+                        <label>
+                            <input type="radio" name="postal" value="No" class="neu-inp" checked>
+                            <div class="neu-opt">No</div>
+                        </label>
+                        <label>
+                            <input type="radio" name="postal" value="Yes" class="neu-inp">
+                            <div class="neu-opt">Yes</div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="act-btn btn-submit">Submit Entry</button>
+                <button class="act-btn btn-new"><i class="fa-solid fa-plus"></i> New</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
