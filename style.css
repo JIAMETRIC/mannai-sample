@@ -1,0 +1,806 @@
+/* --- 1. FONTS IMPORT --- */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@400;500;600&family=Noto+Sans+Tamil:wght@400;500;600&family=Inter:wght@400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+/* --- 2. VARIABLES & RESET --- */
+:root {
+    --primaryColor: #2596be;
+    --secondaryColor: #5bc1da;
+    --tertiaryColor: #666666;
+    --quaternaryColor: #ebeaea;
+    --darkColor: #000000;
+    --lightColor: #ffffff;
+    --shadowPrimary: 0 4px 8px rgba(20, 71, 108, 0.15);
+    --fontHeading: 'Playfair Display', serif;
+    --fontBody: 'Inter', sans-serif;
+    --fontTamil: 'Noto Sans Tamil', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fontBody);
+    background-color: #eff2f7;
+    color: var(--darkColor);
+    font-size: 1.4rem;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--fontHeading);
+}
+
+/* --- 3. LAYOUT ARCHITECTURE --- */
+.main-container {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    /* Sidebar / Content */
+    width: 100%;
+    /* max-width: 1400px; Remove max-width if you want full screen */
+    margin: 0 auto;
+    height: 100vh;
+    background: var(--lightColor);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 4. SIDEBAR --- */
+.sidebar {
+    background-color: var(--primaryColor);
+    color: var(--lightColor);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    /* Allow sidebar to scroll when content is tall */
+}
+
+.sidebar .minister-logo {
+    height: 12rem !important;
+    aspect-ratio: 1 / 1 !important;
+    object-fit: contain !important;
+}
+
+.sidebar h2 {
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* --- BATTLE-TESTED SIDEBAR SEARCH --- */
+
+.sidebar-search-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+    box-sizing: border-box !important;
+}
+
+input#boothSearchInput {
+    /* 1. Reset Browser Defaults (Crucial) */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+
+    /* 2. Force Dimensions */
+    width: 100% !important;
+    height: 40px !important;
+    padding: 0 35px 0 15px !important;
+    /* Space on right for X */
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    /* Keeps padding inside */
+
+    /* 3. Force Visuals */
+    background: rgba(255, 255, 255, 0.15) !important;
+    /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    border-radius: 20px !important;
+    /* Force Rounded Corners */
+    color: #ffffff !important;
+    font-family: inherit !important;
+    font-size: 1.4rem !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Hover & Focus States */
+input#boothSearchInput:focus {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: #ffffff !important;
+}
+
+input#boothSearchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* 4. Fix the X Button Position */
+.search-clear-btn {
+    position: absolute !important;
+    right: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    /* Perfect Vertical Center */
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    display: none;
+    /* JS toggles this */
+}
+
+.search-clear-btn:hover {
+    color: #ffffff !important;
+}
+
+
+
+
+.nav-list {
+    list-style: none;
+    padding: 0 1rem;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.nav-list li {
+    cursor: pointer;
+    padding: 12px 15px;
+    margin: 5px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: all 0.2s;
+    color: var(--lightColor);
+    font-weight: 500;
+    font-size: 1.4rem;
+    font-family: var(--fontBody);
+}
+
+.nav-list li:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.nav-list li.active {
+    background: var(--lightColor);
+    color: var(--primaryColor);
+    font-weight: 700;
+}
+
+.nav-list li.tamil {
+    font-family: var(--fontTamil);
+}
+
+/* Scrollbar for sidebar */
+.nav-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.nav-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+
+
+/* --- 5. CONTENT AREA --- */
+.content-area {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: #eff2f7;
+    height: 100vh;
+}
+
+header.top-header {
+    background-color: var(--lightColor);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--quaternaryColor);
+    flex-shrink: 0;
+}
+
+header.top-header h1 {
+    font-size: 5rem;
+    color: var(--primaryColor);
+}
+
+header.top-header .constituency {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header.top-header .constituency-name {
+    font-size: 3rem;
+    color: var(--primaryColor);
+}
+
+header.top-header .tamil-name {
+    font-family: 'Hind Madurai', sans-serif;
+    font-family: var(--fontTamil);
+    font-size: 2rem;
+    color: var(--tertiaryColor);
+}
+
+
+/* .logo-placeholder { font-weight: bold; background: var(--darkColor); color: #fff; padding: 0.5rem 1rem; border-radius: 4px; } */
+
+header.top-header .dmk-logo {
+    /* background-color: brown; */
+    height: 4rem !important;
+    width: auto;
+}
+
+header.top-header .mannai-logo {
+    /* background-color: brown; */
+    height: 6rem !important;
+    width: auto;
+}
+
+main {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+/* --- 6. DASHBOARD COMPONENTS --- */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--lightColor);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadowPrimary);
+}
+
+.dashboard-header h1 {
+    font-size: 1.8rem;
+}
+
+.booth-badge {
+    background: var(--secondaryColor);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Analysis Section */
+section.analysis {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+}
+
+.total-votes-box {
+    background: var(--lightColor);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-shadow: var(--shadowPrimary);
+    border: 1px solid var(--quaternaryColor);
+}
+
+.total-votes-box .label {
+    font-size: 1.6rem;
+    color: var(--tertiaryColor);
+    margin-bottom: 1rem;
+}
+
+.total-votes-box .number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primaryColor);
+    font-family: var(--fontBody);
+}
+
+.demographics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.stat-box {
+    background: var(--lightColor);
+    border-radius: 6px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.stat-box:hover {
+    background-color: var(--secondaryColor);
+    border-color: var(--primaryColor);
+}
+
+.stat-box:hover span,
+.stat-box:hover strong {
+    color: var(--lightColor);
+}
+
+.stat-box span {
+    font-size: 1.2rem;
+    color: var(--tertiaryColor);
+}
+
+.stat-box strong {
+    font-size: 2rem;
+    color: var(--darkColor);
+    font-weight: 700;
+}
+
+/* Party Stats Row */
+.party-stats-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.8rem;
+    margin-top: 0;
+}
+
+.party-stat-box {
+    background: var(--lightColor);
+    border-radius: 8px;
+    padding: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadowPrimary);
+    border: 1px solid var(--quaternaryColor);
+    transition: all 0.3s ease;
+}
+
+.party-stat-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(20, 71, 108, 0.2);
+    border-color: var(--primaryColor);
+}
+
+.party-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.party-label {
+    font-size: 1rem;
+    color: var(--tertiaryColor);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.party-count {
+    font-size: 1.8rem;
+    color: var(--darkColor);
+    font-weight: 700;
+    font-family: var(--fontBody);
+}
+
+.party-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.admk-logo {
+    width: 37px;
+    height: 37px;
+    object-fit: contain;
+}
+
+
+.tvk-logo {
+    width: 43px;
+    height: 43px;
+    object-fit: contain;
+}
+
+.otn-logo {
+    width: 37px;
+    height: 37px;
+    object-fit: contain;
+}
+
+.others-logo {
+    width: 45px !important;
+    height: 45px !important;
+    object-fit: contain;
+}
+
+.beneficiaries-logo {
+    width: 37px !important;
+    height: 37px !important;
+    object-fit: contain;
+}
+
+.postal-logo {
+    width: 55px !important;
+    height: 55px !important;
+    object-fit: contain;
+}
+
+/* Manipulation Section */
+section.manipulation {
+    display: grid;
+    grid-template-columns: 8fr 3fr;
+    gap: 2rem;
+    align-items: end;
+}
+
+/* Advanced Filter Panel */
+.advanced-filter-panel {
+    background: var(--lightColor);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadowPrimary);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-end;
+}
+
+/* Export options */
+.export_options {
+    background: var(--lightColor);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadowPrimary);
+    display: flex;
+    /* flex-wrap: wrap; */
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--tertiaryColor);
+}
+
+.input-group input,
+.input-group select {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    min-width: 80px;
+}
+
+.btn {
+    height: 3.2rem !important;
+    width: 8rem !important;
+    padding: 0.8rem 1.6rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.3rem;
+    transition: background 0.2s;
+    /* height: 38px; */
+}
+
+.btn-primary {
+    background: var(--primaryColor);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #1d7aa0;
+}
+
+.btn-secondary {
+    background: var(--quaternaryColor);
+    color: var(--tertiaryColor);
+}
+
+.btn-secondary:hover {
+    background: #dcdcdc;
+}
+
+/* Export Options */
+/* .export_options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+} */
+
+/* Add this to your style.css */
+
+/* Specific Button Colors */
+.btn-pdf {
+    background-color: #2596be !important;
+}
+
+/* Blue */
+.btn-excel {
+    background-color: #1D6F42 !important;
+}
+
+/* Green */
+.btn-printer {
+    background-color: #444444 !important;
+}
+
+/* Dark Grey */
+
+.btn-pdf:hover {
+    background-color: #1d7aa0 !important;
+}
+
+.btn-excel:hover {
+    background-color: #155734 !important;
+}
+
+.btn-printer:hover {
+    background-color: #222222 !important;
+}
+
+/* Ensure custom buttons look good in DataTables */
+button.btn-custom {
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    font-size: 1.3rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    margin-right: 5px !important;
+    display: inline-block;
+}
+
+/* Customizing DataTables Buttons */
+
+.dt-buttons {
+    text-align: center !important;
+    width: 100%;
+}
+
+.dt-buttons .dt-button {
+    background: var(--darkColor) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    /* padding: 0.8rem 1.5rem !important; */
+    font-size: 1.2rem;
+    height: 3.5rem !important;
+    width: 13rem !important;
+}
+
+.dt-buttons .dt-button:hover {
+    background: var(--primaryColor) !important;
+}
+
+/* --- 7. TABLE STYLING --- */
+.table_container {
+    background: var(--lightColor);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadowPrimary);
+    overflow-x: auto;
+}
+
+table.dataTable {
+    width: 100% !important;
+    border-collapse: collapse;
+}
+
+table.dataTable thead th {
+    background-color: var(--quaternaryColor);
+    color: var(--darkColor);
+    font-weight: 700;
+    padding: 1.2rem 1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+table.dataTable tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+table.dataTable tr:hover {
+    background-color: #f9fbfd;
+}
+
+.tamil-text {
+    font-family: var(--fontTamil);
+    font-size: 1.1em;
+}
+
+/* --- INLINE COLUMN SEARCH STYLING --- */
+
+/* The row containing the inputs */
+.filters th {
+    background-color: #f1f5f9;
+    /* Slightly lighter than main header */
+    padding: 5px !important;
+}
+
+/* The Input fields themselves */
+.filters input {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    font-family: var(--fontBody);
+}
+
+.filters input:focus {
+    outline: none;
+    border-color: var(--primaryColor);
+    box-shadow: 0 0 0 2px rgba(37, 150, 190, 0.2);
+}
+
+.filters input::placeholder {
+    color: #999;
+    font-size: 1rem;
+}
+
+footer {
+    background: var(--darkColor);
+    color: var(--tertiaryColor);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* --- TABS SYSTEM --- */
+
+/* --- VERTICAL TAB SIDEBAR STYLES --- */
+/* --- OTN NAVIGATION BUTTONS --- */
+/* --- OTN SPECIFIC STYLES (MATCHING MAIN THEME) --- */
+
+/* 1. Sidebar Buttons */
+.otn-nav-btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+
+    /* Transparent Background initially */
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* Font Matching Main Theme */
+    color: white;
+    text-align: left;
+    font-family: var(--fontBody);
+    /* Inter */
+    font-size: 1.3rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.otn-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+/* Active State (White Background, Primary Text) */
+.otn-nav-btn.active {
+    background: white;
+    color: var(--primaryColor);
+    /* #2596be */
+    border-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 2. Content Area Headers */
+.otn-header-title {
+    color: var(--primaryColor);
+    font-family: var(--fontHeading);
+    /* Playfair Display */
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+/* 3. Badges & Highlights */
+.otn-badge {
+    background: var(--primaryColor);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: var(--fontBody);
+}
+
+/* 4. Table Headers Override */
+/* Ensures OTN tables match main dashboard tables exactly */
+#otnTable thead th,
+#tableAll thead th,
+#tableMatched thead th,
+#tableMissing thead th {
+    background-color: var(--quaternaryColor) !important;
+    color: var(--darkColor) !important;
+    font-family: var(--fontBody) !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+}
+
+/* 5. Highlight Mobile Column in Matched Tab */
+.highlight-col {
+    background-color: #e3f2fd !important;
+    color: #0d47a1 !important;
+    font-weight: bold;
+}
+
+/* --- PERCENTAGE STYLING --- */
+.stat-pct {
+    font-size: 0.6em;
+    color: var(--primaryColor) !important;
+    font-weight: 500;
+    margin-left: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 2px 6px;
+    border-radius: 4px;
+    line-height: 1;
+}
