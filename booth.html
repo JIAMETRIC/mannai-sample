@@ -1,531 +1,470 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ta">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Neumorphism - Sharp</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>140-Thali-West | Mannargudi-167</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600&family=Playfair+Display:wght@400;600;700;800&display=swap"
-        rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2596be;
+      --secondary: #1e293b;
+      --bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --header-bg: #f8fafc;
+      --text-main: #334155;
+      --text-label: #64748b;
+    }
 
-    <style>
-        :root {
-            /* Palette */
-            --primary: #2596be;
-            --secondary: #5bc1da;
-            /* Blue */
-            /* --bg: #ebeaea; */
-            /* The Base Grey */
-            --bg: #eff2f7;
-            --text-dark: #3a3a3a;
-            --text-light: #666666;
+    * {
+      box-sizing: border-box;
+    }
 
-            /* Neumorphic Shadows */
-            --neu-shadow-light: #ffffff;
-            /* --neu-shadow-dark: #bebebe; */
-            --neu-shadow-dark: #d1d9e6;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      padding: 15px;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
 
-            /* Fonts */
-            --fontHeading: 'Playfair Display', serif;
-            --fontBody: 'Inter', sans-serif;
-            --fontTamil: 'Noto Sans Tamil', sans-serif;
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-            /* Party Colors */
-            --dmk: #dc2626;
-            --aiadmk: #16a34a;
-            --tvk: #d97706;
-            /* Dark Blue */
-            --others: #64748b;
-            /* Slate Grey */
-        }
+    /* --- 1. HEADER STYLES (MATCHING YOUR IMAGE) --- */
+    .main-header {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      border-left: 6px solid var(--primary);
+      /* The blue bar on the left */
+      position: relative;
+    }
 
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-            outline: none;
-        }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: var(--fontBody);
-            background-color: var(--bg);
-            min-height: 100vh;
-            color: var(--text-dark);
-        }
+    .header-icon {
+      font-size: 24px;
+    }
 
-        /* --- THE NEUMORPHIC CARD --- */
-        .neu-card {
-            width: 100%;
-            max-width: 380px;
-            background: var(--bg);
-            /* Reduced Radius: Was 30px, now 16px */
-            border-radius: 16px;
-            box-shadow:
-                8px 8px 16px var(--neu-shadow-dark),
-                -8px -8px 16px var(--neu-shadow-light);
-            display: flex;
-            flex-direction: column;
-            padding: 24px;
-            margin: 20px auto;
-            /* Centered */
-            position: relative;
-        }
+    .header-title {
+      color: var(--primary);
+      font-size: 20px;
+      font-weight: 700;
+      margin: 0;
+    }
 
-        /* --- PROFILE SECTION --- */
-        .profile-container {
-            /* Reduced Radius */
-            border-radius: 12px;
-            padding: 10px 0;
-            margin-bottom: 20px;
-            position: relative;
-        }
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.2;
+    }
 
-        /* Decorative "Pressed" divider */
-        .divider {
-            height: 2px;
-            width: 100%;
-            background: var(--bg);
-            box-shadow:
-                inset 2px 2px 4px var(--neu-shadow-dark),
-                inset -2px -2px 4px var(--neu-shadow-light);
-            border-radius: 2px;
-            margin: 0 0 20px 0;
-        }
+    .booth-label {
+      font-size: 12px;
+      color: var(--text-label);
+      font-weight: 500;
+    }
 
-        .header-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
+    .booth-value {
+      font-size: 15px !important;
+      font-weight: 500;
+      color: var(--primary);   
+    }
 
-        .sno-text {
-            font-family: var(--fontHeading);
-            color: var(--primary);
-            font-size: 16px;
-            font-weight: 700;
-            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
-        }
+    /* --- DESKTOP ORIGINAL DESIGN ELEMENTS --- */
+    .advanced-filter-panel {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
 
-        .booth-badge {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--text-light);
-            padding: 6px 12px;
-            /* Reduced Radius */
-            border-radius: 6px;
-            background: var(--bg);
-            box-shadow:
-                3px 3px 6px var(--neu-shadow-dark),
-                -3px -3px 6px var(--neu-shadow-light);
-        }
+    .panel-title {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #334155;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 5px;
+    }
 
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
+    .filter-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-end;
+    }
 
-        .names {
-            display: flex;
-            flex-direction: column;
-        }
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
 
-        .ta-name {
-            font-family: var(--fontTamil);
-            color: var(--text-light);
-            font-size: 13px;
-            margin-bottom: 4px;
-        }
+    .filter-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748b;
+    }
 
-        .en-name {
-            font-family: var(--fontHeading);
-            color: var(--text-dark);
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
+    .stats-bar {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      border-radius: 6px;
+      display: flex;
+      gap: 30px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
 
-        .epic {
-            font-family: var(--fontBody);
-            color: var(--primary);
-            font-size: 18px;
-            font-weight: 700;
-            margin-top: 18px;
-            text-shadow: 1px 1px 1px #fff;
-        }
+    .filter-input,
+    .filter-select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 12px;
+    }
 
-        .meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            color: var(--text-light);
-            margin-top: 8px;
-        }
+    .btn-search {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-        .meta strong {
-            color: var(--text-dark);
-            font-weight: 600;
-        }
+    .btn-clear {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+    }
 
+    /* Desktop Table Styling */
+    table.dataTable {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-        /* --- CONTROLS --- */
-        .section-label {
-            font-size: 11px;
-            font-weight: 700;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-            margin-left: 2px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+    table.dataTable thead th {
+      background: var(--primary);
+      color: white;
+      padding: 12px;
+      font-size: 13px;
+      text-transform: uppercase;
+      text-align: left;
+    }
 
-        /* Neomorphic Radios */
-        .party-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
+    .filter-row th {
+      background: #ebf2f7 !important;
+      padding: 8px !important;
+    }
 
-        .neu-radio-label {
-            cursor: pointer;
-            position: relative;
-        }
+    .tamil-text {
+      font-family: 'Noto Sans Tamil', sans-serif;
+    }
 
-        .neu-btn {
-            height: 48px;
-            /* Reduced Radius: Was 14px, now 8px */
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            padding: 0 16px;
-            gap: 12px;
-            transition: all 0.3s ease;
-            background: var(--bg);
-            box-shadow:
-                4px 4px 8px var(--neu-shadow-dark),
-                -4px -4px 8px var(--neu-shadow-light);
-            color: var(--text-light);
-        }
+    /* --- MOBILE RESPONSIVE STYLES --- */
+    @media screen and (max-width: 768px) {
 
-        .dot-well {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            /* Circle stays circular */
-            box-shadow:
-                inset 2px 2px 4px var(--neu-shadow-dark),
-                inset -2px -2px 4px var(--neu-shadow-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+      /* 1. Hide Desktop-Specific Elements */
+      .stats-bar,
+      .advanced-filter-panel,
+      .filter-row,
+      thead {
+        display: none !important;
+      }
 
-        .dot-fill {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: transparent;
-            transition: 0.3s;
-        }
+      /* 2. Header Adjustments for Mobile */
+      .main-header {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+      }
 
-        .p-text {
-            font-size: 12px;
-            font-weight: 600;
-        }
+      .header-title {
+        font-size: 18px;
+      }
 
-        /* Active State */
-        input[type="radio"]:checked+.neu-btn {
-            box-shadow:
-                inset 2px 2px 5px var(--neu-shadow-dark),
-                inset -2px -2px 5px var(--neu-shadow-light);
-            color: var(--primary);
-        }
+      .booth-value {
+        font-size: 18px;
+      }
 
-        /* Color fills */
-        #dmk:checked+.neu-btn .dot-fill {
-            background: var(--dmk);
-            box-shadow: 0 0 6px var(--dmk);
-        }
+      /* 3. Global Search Styling */
+      .dataTables_wrapper .dataTables_filter {
+        float: none;
+        text-align: center;
+        margin-bottom: 15px;
+      }
 
-        #aiadmk:checked+.neu-btn .dot-fill {
-            background: var(--aiadmk);
-            box-shadow: 0 0 6px var(--aiadmk);
-        }
+      .dataTables_wrapper .dataTables_filter input {
+        width: 100%;
+        margin-left: 0;
+        height: 45px;
+        padding: 10px 20px;
+        border: 1px solid #cbd5e1;
+        border-radius: 25px;
+        /* Rounded pill shape */
+        font-size: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        outline: none;
+           }
 
-        #tvk:checked+.neu-btn .dot-fill {
-            background: var(--tvk);
-            box-shadow: 0 0 6px var(--tvk);
-        }
+      .dataTables_wrapper .dataTables_filter input:focus {
+        border-color: var(--primary);
+      }
 
-        #others:checked+.neu-btn .dot-fill {
-            background: var(--others);
-            box-shadow: 0 0 6px var(--others);
-        }
+      /* 4. Card Layout */
+      table.dataTable {
+        border: none;
+        background: transparent;
+      }
 
-        .radio-hide {
-            display: none;
-        }
+      table.dataTable tbody tr {
+        display: flex;
+        flex-direction: column;
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        margin-bottom: 15px;
+        overflow: hidden;
+        padding: 15px;       
+      }
 
+      table.dataTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        border-bottom: 1px solid #f1f5f9;
+        padding: 10px 15px;
+        font-size: 14px;
+        color: var(--text-main);
+        text-align: right;
+        border-radius: 1px
+      }
 
-        /* Toggles */
-        .status-group {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 30px;
-        }
+      table.dataTable td:last-child {
+        border-bottom: none;
+      }
 
-        .toggle-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      /* 5. Labels (Key) */
+      table.dataTable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-label);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-align: left;
+      }
 
-        .t-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--text-dark);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+      /* 6. Card Header Style (The first cell) */
+      table.dataTable td[data-label="#"] {
+        background-color: var(--header-bg);
+        border-bottom: 1px solid #e2e8f0;
+        color: var(--secondary);
+        font-weight: 800;
+        font-size: 15px;
+        padding: 12px 15px;
+      }
 
-        /* Neomorphic Switch Track */
-        .neu-switch {
-            background: var(--bg);
-            /* Reduced Radius: Was 20px, now 10px */
-            border-radius: 10px;
-            padding: 4px;
-            display: flex;
-            box-shadow:
-                inset 2px 2px 4px var(--neu-shadow-dark),
-                inset -2px -2px 4px var(--neu-shadow-light);
-        }
+      table.dataTable td[data-label="#"]::before {
+        display: none;
+      }
 
-        .neu-opt {
-            padding: 6px 16px;
-            font-size: 11px;
-            font-weight: 700;
-            /* Reduced Radius: Was 16px, now 6px */
-            border-radius: 6px;
-            cursor: pointer;
-            color: var(--text-light);
-            transition: 0.3s;
-        }
+      /* 7. Typography Highlights */
+      table.dataTable td[data-label="Name (English)"] {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 15px;
+      }
 
-        /* The Active "Knob" floats above */
-        .neu-inp:checked+.neu-opt {
-            color: var(--primary);
-            background: var(--bg);
-            box-shadow:
-                2px 2px 4px var(--neu-shadow-dark),
-                -2px -2px 4px var(--neu-shadow-light);
-        }
+      table.dataTable td[data-label="Name (Tamil)"] {
+        font-size: 14px;
+        font-weight: 600;
+      }
 
-        .neu-inp {
-            display: none;
-        }
+      /* 8. Pagination Responsive */
+      .dataTables_wrapper .dataTables_paginate {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
 
+      .dataTables_wrapper .dataTables_paginate .paginate_button {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+    }
 
-        /* Buttons */
-        .actions {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-        }
+    /* Utility for Card Header Badge */
+    .card-header-badge {
+      background: #e2e8f0;
+      color: #475569;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      float: right;
+      display: none;
+    }
 
-        .act-btn {
-            border: none;
-            /* Reduced Radius: Was 16px, now 8px */
-            border-radius: 8px;
-            padding: 16px;
-            font-family: var(--fontBody);
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            outline: none;
-        }
-
-        .btn-submit {
-            color: #ffffff;
-            background: var(--secondary);
-            box-shadow:
-                6px 6px 12px var(--neu-shadow-dark),
-                -6px -6px 12px var(--neu-shadow-light);
-        }
-
-        .btn-submit:active {
-            box-shadow:
-                inset 3px 3px 6px var(--neu-shadow-dark),
-                inset -3px -3px 6px var(--neu-shadow-light);
-            color: #1a6b8a;
-        }
-
-        .btn-new {
-            color: var(--text-light);
-            background: var(--bg);
-            box-shadow:
-                6px 6px 12px var(--neu-shadow-dark),
-                -6px -6px 12px var(--neu-shadow-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .btn-new:active {
-            box-shadow:
-                inset 3px 3px 6px var(--neu-shadow-dark),
-                inset -3px -3px 6px var(--neu-shadow-light);
-        }
-
-        /* --- NAVBAR --- */
-        .navbar {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: var(--bg);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            padding: 10px 0;
-            margin-bottom: 20px;
-        }
-
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 480px;
-            /* Match card width logic */
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-
-        /* Ensure images fit well in navbar */
-        .nav-content img {
-            height: 50px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        /* Adjust Constituency Text for Navbar */
-        .constituency {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .constituency-name {
-            font-family: var(--fontHeading);
-            font-size: 16px;
-            margin: 2px 0 0 0;
-            color: var(--primary);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .minister-logo {
-            height: 50px !important;
-            border-radius: 50%;
-            /* Make circular if it's a photo */
-            box-shadow: 2px 2px 5px var(--neu-shadow-dark), -2px -2px 5px var(--neu-shadow-light);
-            margin-bottom: 2px;
-        }
-
-        .tamil-name {
-            font-size: 11px;
-            color: var(--text-light);
-            font-family: 'Noto Sans Tamil', sans-serif;
-            margin-top: 0;
-        }
-
-        /* --- CARD ADJUSTMENTS --- */
-        .neu-card {
-            margin-top: 0;
-            padding-top: 20px;
-        }
-
-        /* --- SEARCH BAR --- */
-        .search-container {
-            max-width: 380px;
-            margin: 0 auto 20px auto;
-            padding: 0 16px;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 12px 40px 12px 20px;
-            border-radius: 50px;
-            border: 1px solid var(--secondary);
-            /* Updated to Secondary Color */
-            background: var(--bg);
-            /* Match bg */
-            color: var(--text-dark);
-            outline: none;
-            /* Inner Shadow (Pressed) - Stronger */
-            box-shadow: inset 5px 5px 10px var(--neu-shadow-dark),
-                inset -5px -5px 10px var(--neu-shadow-light);
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            box-shadow: inset 2px 2px 5px var(--neu-shadow-dark),
-                inset -2px -2px 5px var(--neu-shadow-light);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light);
-            pointer-events: none;
-        }
-    </style>
+    @media (max-width: 768px) {
+      .card-header-badge {
+        display: inline-block;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR (Fixed/Sticky Header) -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <img class="dmk-logo" src="party_logos/logo_dmk.png" alt="">
-            <div class="constituency">
-                <img class="minister-logo" src="party_logos/minister.png" alt="">
-                <h2 class="constituency-name">Mannargudi-167</h2>
-                <span class="tamil-name">(மன்னார்குடி)</span>
-            </div>
-            <img class="mannai-logo" src="party_logos/logo_mannai.png" alt="">
-        </div>
-    </nav>
+  <div class="container">
 
-    <!-- SEARCH BAR -->
-    <div class="search-container">
-        <input type="text" class="search-input" placeholder="Search Voter...">
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <!-- REVISED HEADER (Matches Image) -->
+    <header class="main-header">
+      <div class="header-left">
+        <span class="header-icon">🗳️</span>
+        <h1 class="header-title">Mannargudi-167</h1>
+      </div>
+      <div class="header-right">
+        <span class="booth-label">Booth No</span>
+        <span class="booth-value" id="headerBoothNo">-</span>
+      </div>
+    </header>
+
+    <!-- Desktop Only: Statistics -->
+    <div class="stats-bar">
+      <span>Voter Count: <span id="totalCount">0</span></span>
+      <span>Male Count: <span id="maleCount">0</span></span>
+      <span>Female Count: <span id="femaleCount">0</span></span>
     </div>
 
-<div id='card-container'></div>
-<script>
+    <!-- Desktop Only: Advanced Filter Panel -->
+    <div class="advanced-filter-panel">
+      <div class="panel-title">2 Advanced Filter:</div>
+      <div class="filter-grid">
+        <div class="filter-group">
+          <label>Age (from):</label>
+          <input type="number" id="advMinAge" class="filter-input" style="width:100px;" placeholder="Min">
+        </div>
+        <div class="filter-group">
+          <label>Age to:</label>
+          <input type="number" id="advMaxAge" class="filter-input" style="width:100px;" placeholder="Max">
+        </div>
+        <div class="filter-group">
+          <label>Gender:</label>
+          <select id="advGender" class="filter-select" style="width:120px;">
+            <option value="">All</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Booth No:</label>
+          <input type="text" id="advBooth" class="filter-input" style="width:100px;" placeholder="Booth">
+        </div>
+        <div class="filter-group">
+          <label>Page No:</label>
+          <input type="text" id="advPage" class="filter-input" style="width:100px;" placeholder="Page">
+        </div>
+        <button class="btn-search" onclick="applyAdvancedFilters()">🔍 Search Filters</button>
+        <button class="btn-clear" onclick="location.reload()">Clear All Filters</button>
+      </div>
+    </div>
+
+    <table id="voterTable" class="display nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>EPIC No</th>
+          <th>Name (Tamil)</th>
+          <th>Name (English)</th>
+          <th>Relative Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Booth</th>
+          <th>Page</th>
+        </tr>
+        <!-- Desktop Only: Header Filters -->
+        <tr class="filter-row">
+          <th></th>
+          <th><input type="text" class="excel-filter" data-col="1" placeholder="Search EPIC"></th>
+          <th><input type="text" class="excel-filter" data-col="2" placeholder="பெயர்"></th>
+          <th><input type="text" class="excel-filter" data-col="3" placeholder="Name"></th>
+          <th><input type="text" class="excel-filter" data-col="4" placeholder="Relative Name"></th>
+          <th></th>
+          <th>
+            <select class="excel-filter strict-f" data-col="6">
+              <option value="">All</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </th>
+          <th>
+            <select class="excel-filter strict-f" data-col="7">
+              <option value="">All Booths</option>
+              <option value="140">140</option>
+              <option value="141">141</option>
+              <option value="142">142</option>
+            </select>
+          </th>
+          <th>
+            <select class="excel-filter strict-f" data-col="8">
+              <option value="">All Pages</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+          </th>
+        </tr>
+      </thead>
+      <tbody id="tableData"></tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script>
+    // Sample Data - (Paste full data here)
 const mainData = [
   {
     "sno": 1,
@@ -7701,161 +7640,109 @@ const mainData = [
   }
 ];
 
+let table;
 
-const container = document.getElementById('card-container');
-const searchInput = document.querySelector('.search-input');
+    $(document).ready(function () {
+      const tbody = $('#tableData');
 
-function renderCards(data) {
-  const fragment = document.createDocumentFragment();
-  container.innerHTML = '';
-  
-  // Show message if no data
-  if(data.length === 0) {
-      container.innerHTML = '<div style="text-align:center; padding:20px; color:#888;">No results found</div>';
-      return;
-  }
+      mainData.forEach(r => {
+        // Mobile View: We inject the Booth Number into the first cell as a badge for the Card Header
+        // Desktop View: This badge is hidden via CSS
+        const snoCellContent = `
+            <span style="float:left"># ${r.sno}</span>
+            <span class="card-header-badge">Booth: ${r.bth}</span>
+        `;
 
-  data.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'neu-card';
-    
-    // Parse Booth Info
-    const boothParts = item.bth ? item.bth.split('-') : ['',''];
-    const boothNo = boothParts[0];
-    const boothName = boothParts.slice(1).join('-');
-    const genderShort = item.gen === 'Male' ? 'M' : (item.gen === 'Female' ? 'F' : 'O');
-    
-    // Unique ID for inputs
-    const uid = item.sno;
+        tbody.append(`<tr>
+            <td data-label="#" data-order="${r.sno}">${snoCellContent}</td>
+            <td data-label="EPIC No">${r.epic}</td>
+            <td data-label="Name (Tamil)" class="tamil-text">${r.ta}</td>
+            <td data-label="Name (English)">${r.en}</td>
+            <td data-label="Relative Name">${r.rnm}</td>
+            <td data-label="Age">${r.age}</td>
+            <td data-label="Gender">${r.gen}</td>
+            <td data-label="Booth">${r.bth}</td>
+            <td data-label="Page">${r.pg}</td>
+        </tr>`);
+      });
 
-    card.innerHTML = `
-        <div class="profile-container">
-            <div class="header-row">
-                <div class="sno-text">S.No: <span>${item.sno}</span></div>
-                <div class="booth-badge">Booth: <span>${boothNo}</span></div>
-            </div>
+      table = $('#voterTable').DataTable({
+        orderCellsTop: true,
+        // DOM Configuration: 
+        // Mobile uses only 'f' (filter), 'r' (processing), 't' (table), 'i' (info), 'p' (pagination)
+        // Desktop elements are hidden via CSS so strict DOM placement isn't as critical, but we keep it standard.
+        dom: '<"top"f>rt<"bottom"ip><"clear">',
+        pageLength: 10, // Default page length
+        language: {
+          search: "",
+          searchPlaceholder: "🔍 Search Name, EPIC..."
+        },
+        drawCallback: function () {
+          const api = this.api();
+          updateStats(api);
+          updateHeaderBooth(api); // Update the big header booth number
+        }
+      });
 
-            <div class="info-row">
-                <div class="names">
-                    <span class="ta-name">${item.ta}</span>
-                    <span class="en-name">${item.en}</span>
-                </div>
-                <div class="epic">${item.epic}</div>
-            </div>
+      // 1. Excel Header Search (Desktop)
+      $('.excel-filter').on('keyup change', function () {
+        const colIdx = $(this).data('col');
+        const val = $(this).val();
+        if ($(this).hasClass('strict-f')) {
+          table.column(colIdx).search(val ? '^' + val + '$' : '', true, false).draw();
+        } else {
+          table.column(colIdx).search(val).draw();
+        }
+      });
 
-            <div class="meta">
-                <div>Rel: <strong><span>${item.rnm}</span></strong></div>
-                <div>Age: <strong><span>${item.age}</span> / <span>${genderShort}</span></strong></div>
-            </div>
-            <div class="meta" style="margin-top:4px">
-                <div>Page No: <strong><span>${item.pg}</span></strong></div>
-                <div>Union: <strong>Mannargudi</strong></div>
-            </div>
-        </div>
+      // 2. Global Advanced Filter Panel Push (Desktop)
+      $.fn.dataTable.ext.search.push(function (settings, data) {
+        let min = parseInt($('#advMinAge').val(), 10);
+        let max = parseInt($('#advMaxAge').val(), 10);
+        let age = parseFloat(data[5]) || 0;
+        let gen = $('#advGender').val();
+        let bth = $('#advBooth').val();
+        let pg = $('#advPage').val();
 
-        <div class="divider"></div>
+        if (!isNaN(min) && age < min) return false;
+        if (!isNaN(max) && age > max) return false;
+        if (gen !== "" && data[6] !== gen) return false;
+        if (bth !== "" && data[7] !== bth) return false;
+        if (pg !== "" && data[8] !== pg) return false;
 
-        <div>
-            <div class="section-label"><i class="fa-solid fa-flag"></i> Select Party</div>
-            <div class="party-list">
-
-                <label class="neu-radio-label">
-                    <input type="radio" name="party_${uid}" id="dmk_${uid}" class="radio-hide">
-                    <div class="neu-btn">
-                        <div class="dot-well"><div class="dot-fill"></div></div>
-                        <span class="p-text">DMK</span>
-                    </div>
-                </label>
-
-                <label class="neu-radio-label">
-                    <input type="radio" name="party_${uid}" id="aiadmk_${uid}" class="radio-hide">
-                    <div class="neu-btn">
-                        <div class="dot-well"><div class="dot-fill"></div></div>
-                        <span class="p-text">AIADMK</span>
-                    </div>
-                </label>
-
-                <label class="neu-radio-label">
-                    <input type="radio" name="party_${uid}" id="tvk_${uid}" class="radio-hide">
-                    <div class="neu-btn">
-                        <div class="dot-well"><div class="dot-fill"></div></div>
-                        <span class="p-text">TVK</span>
-                    </div>
-                </label>
-
-                <label class="neu-radio-label">
-                    <input type="radio" name="party_${uid}" id="others_${uid}" class="radio-hide">
-                    <div class="neu-btn">
-                        <div class="dot-well"><div class="dot-fill"></div></div>
-                        <span class="p-text">Others</span>
-                    </div>
-                </label>
-
-            </div>
-
-            <div class="section-label"><i class="fa-solid fa-sliders"></i> Status</div>
-            <div class="status-group">
-                <div class="toggle-row">
-                    <div class="t-label"><i class="fa-solid fa-building-columns" style="color:#aaa"></i> Beneficiaries</div>
-                    <div class="neu-switch">
-                        <label>
-                            <input type="radio" name="ben_${uid}" value="No" class="neu-inp" checked>
-                            <div class="neu-opt">No</div>
-                        </label>
-                        <label>
-                            <input type="radio" name="ben_${uid}" value="Yes" class="neu-inp">
-                            <div class="neu-opt">Yes</div>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="toggle-row">
-                    <div class="t-label"><i class="fa-solid fa-envelope" style="color:#aaa"></i> Postal Vote</div>
-                    <div class="neu-switch">
-                        <label>
-                            <input type="radio" name="postal_${uid}" value="No" class="neu-inp" checked>
-                            <div class="neu-opt">No</div>
-                        </label>
-                        <label>
-                            <input type="radio" name="postal_${uid}" value="Yes" class="neu-inp">
-                            <div class="neu-opt">Yes</div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="actions">
-                <button class="act-btn btn-submit">Submit Entry</button>
-                <button class="act-btn btn-new"><i class="fa-solid fa-plus"></i> New</button>
-            </div>
-        </div>
-    `;
-    fragment.appendChild(card);
-  });
-  container.appendChild(fragment);
-}
-
-// Debounce for performance if needed, but strict filtering is fine
-searchInput.addEventListener('input', function(e) {
-    const val = e.target.value.toLowerCase().trim();
-    if (!val) {
-        renderCards(mainData);
-        return;
-    }
-    const filtered = mainData.filter(item => {
-        return (
-            (item.en && item.en.toLowerCase().includes(val)) ||
-            (item.ta && item.ta.includes(val)) ||
-            (item.epic && item.epic.toLowerCase().includes(val)) ||
-            (item.sno && item.sno.toString().includes(val))
-        );
+        return true;
+      });
     });
-    renderCards(filtered);
-});
 
-// Initial Render
-renderCards(mainData);
+    function applyAdvancedFilters() { table.draw(); }
 
-</script>
+    function updateStats(api) {
+      // Only update if stats bar is visible (Desktop check is done via CSS usually, 
+      // but running calculation doesn't hurt)
+      const data = api.rows({ filter: 'applied' }).data();
+      let m = 0, f = 0;
+      data.each(row => {
+        // row[6] is Gender. 
+        if (row[6] === 'Male') m++;
+        if (row[6] === 'Female') f++;
+      });
+      $('#totalCount').text(data.length);
+      $('#maleCount').text(m);
+      $('#femaleCount').text(f);
+    }
+
+    // Logic to update the Main Header Booth Number
+    function updateHeaderBooth(api) {
+      const data = api.rows({ filter: 'applied' }).data();
+      if (data.length > 0) {
+        // Get the booth number of the first visible row (Index 7 is Booth)
+        const firstBooth = data[0][7];
+        $('#headerBoothNo').text(firstBooth);
+      } else {
+        $('#headerBoothNo').text("-");
+      }
+    }
+  </script>
 </body>
+
 </html>
