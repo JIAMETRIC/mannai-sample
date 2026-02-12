@@ -461,6 +461,45 @@
             margin-top: 0;
             padding-top: 20px;
         }
+
+        /* --- SEARCH BAR --- */
+        .search-container {
+            max-width: 380px;
+            margin: 0 auto 20px auto;
+            padding: 0 16px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 40px 12px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            /* Added subtle border */
+            background: var(--bg);
+            /* Match bg */
+            color: var(--text-dark);
+            outline: none;
+            /* Inner Shadow (Pressed) - Stronger */
+            box-shadow: inset 5px 5px 10px var(--neu-shadow-dark),
+                inset -5px -5px 10px var(--neu-shadow-light);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: inset 2px 2px 5px var(--neu-shadow-dark),
+                inset -2px -2px 5px var(--neu-shadow-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -479,12 +518,18 @@
         </div>
     </nav>
 
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search Voter...">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    </div>
+
     <div class="neu-card">
 
         <!-- PROFILE -->
         <div class="profile-container">
             <div class="header-row">
-                <div class="sno-text">S.No: <span id="sno"></span>465</span></div>
+                <div class="sno-text">S.No: <span id="sno">465</span></div>
                 <div class="booth-badge">Booth: <span id="booth">307</span></div>
             </div>
 
