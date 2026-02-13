@@ -41,10 +41,11 @@
       /* Party Colors */
       --dmk: #dc2626;
       --aiadmk: #16a34a;
-      --tvk: #d97706;
+
       /* Dark Blue */
       --others: #64748b;
       /* Slate Grey */
+      --polling-active: #00cec8;
     }
 
     * {
@@ -66,6 +67,7 @@
     .neu-card {
       width: 100%;
       max-width: 380px;
+      /* Reduced Max Width slightly */
       background: var(--bg);
       /* Reduced Radius: Was 30px, now 16px */
       border-radius: 16px;
@@ -74,9 +76,10 @@
         -8px -8px 16px var(--neu-shadow-light);
       display: flex;
       flex-direction: column;
-      padding: 24px;
-      margin: 20px auto;
-      /* Centered */
+      padding: 16px;
+      /* Reduced Padding from 24px */
+      margin: 10px auto;
+      /* Reduced Margin from 20px */
       position: relative;
     }
 
@@ -85,7 +88,8 @@
       /* Reduced Radius */
       border-radius: 12px;
       padding: 10px 0;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      /* Reduced from 20px */
       position: relative;
     }
 
@@ -98,14 +102,16 @@
         inset 2px 2px 4px var(--neu-shadow-dark),
         inset -2px -2px 4px var(--neu-shadow-light);
       border-radius: 2px;
-      margin: 0 0 20px 0;
+      margin: 0 0 10px 0;
+      /* Reduced from 20px */
     }
 
     .header-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 10px;
+      /* Reduced from 16px */
     }
 
     .sno-text {
@@ -133,7 +139,8 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      /* Reduced from 12px */
     }
 
     .names {
@@ -161,7 +168,8 @@
       color: var(--primary);
       font-size: 18px;
       font-weight: 700;
-      margin-top: 18px;
+      margin-top: 10px;
+      /* Reduced from 18px */
       text-shadow: 1px 1px 1px #fff;
     }
 
@@ -170,7 +178,8 @@
       justify-content: space-between;
       font-size: 12px;
       color: var(--text-light);
-      margin-top: 8px;
+      margin-top: 4px;
+      /* Reduced from 8px */
     }
 
     .meta strong {
@@ -186,7 +195,8 @@
       color: #888;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
+      /* Reduced from 12px */
       margin-left: 2px;
       display: flex;
       align-items: center;
@@ -196,9 +206,11 @@
     /* Neomorphic Radios */
     .party-list {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 24px;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      /* Reduced from 16px */
+      margin-bottom: 16px;
+      /* Reduced from 24px */
     }
 
     .neu-radio-label {
@@ -207,13 +219,16 @@
     }
 
     .neu-btn {
-      height: 48px;
+      height: 38px;
+      /* Reduced from 48px */
       /* Reduced Radius: Was 14px, now 8px */
       border-radius: 8px;
       display: flex;
       align-items: center;
-      padding: 0 16px;
-      gap: 12px;
+      padding: 0 12px;
+      /* Reduced padding */
+      gap: 8px;
+      /* Reduced gap */
       transition: all 0.3s ease;
       background: var(--bg);
       box-shadow:
@@ -267,14 +282,22 @@
       box-shadow: 0 0 6px var(--aiadmk);
     }
 
-    input[id^="tvk"]:checked+.neu-btn .dot-fill {
-      background: var(--tvk);
-      box-shadow: 0 0 6px var(--tvk);
-    }
+
 
     input[id^="others"]:checked+.neu-btn .dot-fill {
       background: var(--others);
       box-shadow: 0 0 6px var(--others);
+    }
+
+    /* Polling Status Active */
+    input[id^="poll_yes"]:checked+.neu-btn .dot-fill {
+      background: var(--polling-active);
+      box-shadow: 0 0 6px var(--polling-active);
+    }
+
+    input[id^="poll_no"]:checked+.neu-btn .dot-fill {
+      background: var(--polling-active);
+      box-shadow: 0 0 6px var(--polling-active);
     }
 
     .radio-hide {
@@ -286,8 +309,10 @@
     .status-group {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 30px;
+      gap: 12px;
+      /* Reduced from 16px */
+      margin-bottom: 20px;
+      /* Reduced from 30px */
     }
 
     .toggle-row {
@@ -318,7 +343,8 @@
     }
 
     .neu-opt {
-      padding: 6px 16px;
+      padding: 5px 12px;
+      /* Reduced vertical padding */
       font-size: 11px;
       font-weight: 700;
       /* Reduced Radius: Was 16px, now 6px */
@@ -342,6 +368,43 @@
     }
 
 
+    /* Mobile Input */
+    .mobile-container {
+      margin-bottom: 16px;
+      /* Reduced from 24px */
+      position: relative;
+    }
+
+    .mobile-input {
+      width: 100%;
+      padding: 10px 12px 10px 36px;
+      /* Reduced padding */
+      border-radius: 8px;
+      border: 1px solid transparent;
+      background: var(--bg);
+      color: var(--text-dark);
+      outline: none;
+      box-shadow: inset 4px 4px 8px var(--neu-shadow-dark),
+        inset -4px -4px 8px var(--neu-shadow-light);
+      font-size: 14px;
+      font-family: var(--fontBody);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-input:focus {
+      border-color: var(--secondary);
+    }
+
+    .mobile-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+      pointer-events: none;
+      font-size: 14px;
+    }
+
     /* Buttons */
     .actions {
       display: grid;
@@ -353,7 +416,8 @@
       border: none;
       /* Reduced Radius: Was 16px, now 8px */
       border-radius: 8px;
-      padding: 16px;
+      padding: 12px;
+      /* Reduced from 16px */
       font-family: var(--fontBody);
       font-size: 14px;
       font-weight: 600;
@@ -737,7 +801,7 @@
               <option value="">Select</option>
               <option value="DMK">DMK</option>
               <option value="AIADMK">AIADMK</option>
-              <option value="TVK">TVK</option>
+
               <option value="Others">Others</option>
             </select>
           </div>
@@ -8033,13 +8097,7 @@
                     </div>
                 </label>
 
-                <label class="neu-radio-label">
-                    <input type="radio" name="party_${uid}" id="tvk_${uid}" class="radio-hide">
-                    <div class="neu-btn">
-                        <div class="dot-well"><div class="dot-fill"></div></div>
-                        <span class="p-text">TVK</span>
-                    </div>
-                </label>
+
 
                 <label class="neu-radio-label">
                     <input type="radio" name="party_${uid}" id="others_${uid}" class="radio-hide">
@@ -8049,6 +8107,27 @@
                     </div>
                 </label>
 
+            </div>
+
+            <div class="section-label"><i class="fa-solid fa-check-to-slot"></i> Polling Status</div>
+            <div class="party-list" style="grid-template-columns: 1fr 1fr;"> <!-- 2 columns for Yes/No -->
+                
+                <label class="neu-radio-label">
+                    <input type="radio" name="poll_${uid}" id="poll_yes_${uid}" value="Yes" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well"><div class="dot-fill"></div></div>
+                        <span class="p-text">Yes</span>
+                    </div>
+                </label>
+
+                <label class="neu-radio-label">
+                    <input type="radio" name="poll_${uid}" id="poll_no_${uid}" value="No" class="radio-hide">
+                    <div class="neu-btn">
+                        <div class="dot-well"><div class="dot-fill"></div></div>
+                        <span class="p-text">No</span>
+                    </div>
+                </label>
+                
             </div>
 
             <div class="section-label"><i class="fa-solid fa-sliders"></i> Status</div>
@@ -8080,6 +8159,12 @@
                         </label>
                     </div>
                 </div>
+            </div>
+
+            <div class="section-label"><i class="fa-solid fa-square-phone"></i> Mobile Contact</div>
+            <div class="mobile-container">
+                <i class="fa-solid fa-mobile-screen mobile-icon"></i>
+                <input type="tel" class="mobile-input mobile-field" placeholder="Mobile Number" value="${item.mobile || ''}">
             </div>
 
             <div class="actions">
@@ -8130,16 +8215,20 @@
 
         // Find selected radio/toggle values
         const party = card.querySelector('input[name^="party_"]:checked')?.id.split('_')[0] || '';
+        const polling_status = card.querySelector('input[name^="poll_"]:checked')?.value || '';
         const gov_ben = card.querySelector('input[name^="ben_"]:checked')?.value || 'No';
         const postal = card.querySelector('input[name^="postal_"]:checked')?.value || 'No';
+        const mobile = card.querySelector('.mobile-field')?.value || '';
 
         // Prepare data for update. Note: we use EPIC as identifier if ID is missing in mainData
         const formData = new FormData();
         formData.append('action', 'update_by_epic'); // We'll add this handler to crud_handler.php or assume it exists
         formData.append('epic', epic);
         formData.append('party', party);
+        formData.append('polling_status', polling_status);
         formData.append('government_beneficiaries', gov_ben);
         formData.append('postal', postal);
+        formData.append('mobile', mobile);
 
         fetch('crud_handler.php', {
           method: 'POST',

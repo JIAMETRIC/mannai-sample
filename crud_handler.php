@@ -43,15 +43,17 @@ function updateRecordByEpic($pdo) {
     }
     
     $sql = "UPDATE otn_2026 SET 
-            party = :party, government_beneficiaries = :gov_ben, postal = :postal
+            party = :party, polling_status = :polling_status, government_beneficiaries = :gov_ben, postal = :postal, mobile = :mobile
             WHERE epic = :epic";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
         ':epic' => $epic,
         ':party' => $_POST['party'] ?: null,
+        ':polling_status' => $_POST['polling_status'] ?: null,
         ':gov_ben' => $_POST['government_beneficiaries'] ?: null,
-        ':postal' => $_POST['postal'] ?: null
+        ':postal' => $_POST['postal'] ?: null,
+        ':mobile' => $_POST['mobile'] ?: null
     ]);
     
     return ['success' => true, 'message' => 'Record Added Successfully'];
@@ -76,8 +78,8 @@ function createRecord($pdo) {
         return ['success' => false, 'message' => 'EPIC number already exists'];
     }
     
-    $sql = "INSERT INTO otn_2026 (sno, epic, name_ta, name_en, rel_type, rel_name_ta, rel_name_en, house_no, age, gender, booth, page, mobile, party, government_beneficiaries, postal)
-            VALUES (:sno, :epic, :name_ta, :name_en, :rel_type, :rel_name_ta, :rel_name_en, :house_no, :age, :gender, :booth, :page, :mobile, :party, :gov_ben, :postal)";
+    $sql = "INSERT INTO otn_2026 (sno, epic, name_ta, name_en, rel_type, rel_name_ta, rel_name_en, house_no, age, gender, booth, page, mobile, party, polling_status, government_beneficiaries, postal)
+            VALUES (:sno, :epic, :name_ta, :name_en, :rel_type, :rel_name_ta, :rel_name_en, :house_no, :age, :gender, :booth, :page, :mobile, :party, :polling_status, :gov_ben, :postal)";
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
@@ -95,6 +97,7 @@ function createRecord($pdo) {
         ':page' => $_POST['page'],
         ':mobile' => $_POST['mobile'] ?: null,
         ':party' => $_POST['party'] ?: null,
+        ':polling_status' => $_POST['polling_status'] ?: null,
         ':gov_ben' => $_POST['government_beneficiaries'] ?: null,
         ':postal' => $_POST['postal'] ?: null
     ]);
@@ -148,7 +151,7 @@ function updateRecord($pdo) {
             sno = :sno, epic = :epic, name_ta = :name_ta, name_en = :name_en,
             rel_type = :rel_type, rel_name_ta = :rel_name_ta, rel_name_en = :rel_name_en,
             house_no = :house_no, age = :age, gender = :gender, booth = :booth, page = :page,
-            mobile = :mobile, party = :party, government_beneficiaries = :gov_ben, postal = :postal
+            mobile = :mobile, party = :party, polling_status = :polling_status, government_beneficiaries = :gov_ben, postal = :postal
             WHERE id = :id";
     
     $stmt = $pdo->prepare($sql);
@@ -168,6 +171,7 @@ function updateRecord($pdo) {
         ':page' => $_POST['page'],
         ':mobile' => $_POST['mobile'] ?: null,
         ':party' => $_POST['party'] ?: null,
+        ':polling_status' => $_POST['polling_status'] ?: null,
         ':gov_ben' => $_POST['government_beneficiaries'] ?: null,
         ':postal' => $_POST['postal'] ?: null
     ]);
